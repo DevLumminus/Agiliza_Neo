@@ -4,7 +4,8 @@
 ## Frente do app
 
 ## Decisões estratégicas
-
+### Versão 1.0
 Uso da linguagem **Kotlin** no **Android Studio**<br>
 
 ## O que foi aprendido
+### Versão 1.0
