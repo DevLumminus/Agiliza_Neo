@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_add"
+        android:icon="@drawable/ic_plus"
+        android:title="Adicionar"/>
+
+    <item
+        android:id="@+id/nav_estatistica"
+        android:icon="@drawable/ic_bar_chart"
+        android:title="Gráfico"/>
+
+    <item
+        android:id="@+id/nav_calendar"
+        android:icon="@drawable/ic_calendar"
+        android:title="Calendário"/>
+</menu>
