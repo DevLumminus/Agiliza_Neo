@@ -10,6 +10,8 @@ Botão agora sinaliza o quando clica (feedback visual)<br>
 Colocar o nome do app em vez da logo (melhora a visualização e o entendimento)<br>
 Colocar a logo como botão de voltar no ToolBar<br>
 Fazer botões separados e com **Linear** e **Frame** para separar a customização dos botões do menu
+Não usar o toolbar, mas o Constraint component para visualização mais linear<br>
+Padronização das telas<br>
 
 ## O que foi aprendido
 ### Versão 1.0
@@ -18,3 +20,4 @@ Como configurar e fazer um **ToolBar** com botão de voltar e menu flutuante na 
 Como configurar e fazer uma **Logo** para o app tela<br>
 Como configurar e fazer uma **TextView** para o app tela<br>
 Como configurar e fazer uma **Menu Rodapé** para o app tela<br>
+Uso de **Contraint** e **Linear Component** para maximização da fluidez

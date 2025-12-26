@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/MenuAjuda"
+        android:background="@color/bottomBarFloat"
         android:title="Ajuda❓"
         app:showAsAction="never" />
     <item
         android:id="@+id/MenuConfig"
+        android:background="@color/bottomBarFloat"
         android:title="Configurações⚙️"
         app:showAsAction="never" />
 
