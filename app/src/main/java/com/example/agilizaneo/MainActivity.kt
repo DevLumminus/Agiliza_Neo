@@ -73,18 +73,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Botão "Calendario"
-        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
-        botaoCalendar.setOnClickListener {   // <-- aqui deve ser botaoCalendar
-            val intent = Intent(this, PageRegistros::class.java)
-            startActivity(intent)
-        }
-
-        // Botão "Estatistica"
-        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
-        botaoEstatistic.setOnClickListener {  // <-- aqui deve ser botaoEstatistic
-            val intent = Intent(this, PageEstatistica::class.java)
-            startActivity(intent)
-        }
+//        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
+//        botaoCalendar.setOnClickListener {   // <-- aqui deve ser botaoCalendar
+//            val intent = Intent(this, PageRegistros::class.java)
+//            startActivity(intent)
+//        }
+//
+//        // Botão "Estatistica"
+//        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
+//        botaoEstatistic.setOnClickListener {  // <-- aqui deve ser botaoEstatistic
+//            val intent = Intent(this, PageEstatistica::class.java)
+//            startActivity(intent)
+//        }
 
     }
 }
