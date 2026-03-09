@@ -8,162 +8,22 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- 🔹 TOOLBAR CUSTOMIZADA -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/customToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- Logo / botão voltar -->
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@mipmap/ic_toolbar_overflow"
-            android:contentDescription="Voltar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginStart="12dp"/>
-
-        <!-- Menu 3 pontinhos -->
-        <ImageButton
-            android:id="@+id/btnMenu"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_more_vert"
-            android:contentDescription="Menu"
-            android:scaleType="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="12dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- 🔹 BLOCO PRINCIPAL CENTRALIZADO -->
-    <LinearLayout
-        android:id="@+id/blocoPrincipal"
+    <include
+        android:id="@+id/barraSuperior"
+        layout="@layout/barra_superior_padrao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="24dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/customToolbar"
-        app:layout_constraintBottom_toTopOf="@id/BarraCustomizada"
-        app:layout_constraintVertical_bias="0.35"> <!-- centraliza verticalmente -->
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- 🔹 TEXTO DE BOAS-VINDAS -->
-        <TextView
-            android:id="@+id/Welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/alatsi"
-            android:text="Bem-Vindo ao Agiliza Neo"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="36sp"
-            android:gravity="center"
-            android:layout_marginBottom="16dp"/>
-
-        <!-- 🔹 TEXTO INTRO -->
-        <TextView
-            android:id="@+id/TextoIntro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/alatsi"
-            android:gravity="center"
-            android:text="Se está procurando um facilitador para as suas contas básicas como água, luz, telefone, etc, você está no lugar certo."
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:layout_marginBottom="24dp"/>
-
-        <!-- 🔹 BOTÃO PRINCIPAL -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/BotaoAdd"
-            android:layout_width="230dp"
-            android:layout_height="70dp"
-            android:background="@drawable/botao_selector"
-            android:fontFamily="@font/alatsi"
-            android:text="Vamos Agilizar"
-            android:textColor="@color/text_botao_selector"
-            android:textSize="20sp"/>
-    </LinearLayout>
-
-    <!-- 🔹 CONTAINER (para conteúdo dinâmico abaixo do bloco principal) -->
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/blocoPrincipal"
-        app:layout_constraintBottom_toTopOf="@id/BarraCustomizada"/>
-
-    <!-- 🔹 BOTTOM BAR -->
-    <LinearLayout
-        android:id="@+id/BarraCustomizada"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="@color/bottomBarBackground"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <!-- Botão Add -->
-        <FrameLayout
-            android:id="@+id/btAdd"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:foreground="@drawable/ripple_custom"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_plus"/>
-        </FrameLayout>
-
-        <!-- Botão Calendar -->
-        <FrameLayout
-            android:id="@+id/btCalendar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:foreground="@drawable/ripple_custom"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_calendar"/>
-        </FrameLayout>
-
-        <!-- Botão Estatística -->
-        <FrameLayout
-            android:id="@+id/btEstatistica"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:foreground="@drawable/ripple_custom"
-            android:clickable="true"
-            android:focusable="true">
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_bar_chart"/>
-        </FrameLayout>
-    </LinearLayout>
+    <include
+        android:id="@+id/menuPrincipal"
+        layout="@layout/barra_de_menu_padrao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

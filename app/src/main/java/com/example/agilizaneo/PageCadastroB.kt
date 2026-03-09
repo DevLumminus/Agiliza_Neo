@@ -15,6 +15,13 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
 import java.io.File
 import java.util.Calendar
+import android.text.InputType
+import android.view.View
+import android.widget.TextView
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.button.MaterialButton
+import android.widget.PopupMenu
 
 class PageCadastroB : AppCompatActivity() {
 
@@ -70,31 +77,92 @@ class PageCadastroB : AppCompatActivity() {
         }
 
         // ===== CAMPO DE DATA =====
-        val edtNDias = findViewById<TextInputEditText>(R.id.edtNDias)
+        fun configurarCampo(
+            view: View,
+            titulo: String,
+            hint: String,
+            tipo: String
+        ) {
 
-        edtNDias.setOnClickListener {
-            val calendario = Calendar.getInstance()
+            val txt = view.findViewById<TextView>(R.id.txtTitulo)
+            val til = view.findViewById<TextInputLayout>(R.id.tilCampo)
+            val edt = view.findViewById<TextInputEditText>(R.id.edtCampo)
 
-            DatePickerDialog(
-                this,
-                { _, year, month, day ->
-                    val data = String.format("%02d/%02d/%04d", day, month + 1, year)
-                    edtNDias.setText(data)
-                },
-                calendario.get(Calendar.YEAR),
-                calendario.get(Calendar.MONTH),
-                calendario.get(Calendar.DAY_OF_MONTH)
-            ).show()
+            txt.text = titulo
+            til.hint = hint
+
+            when (tipo) {
+
+                "number" -> {
+                    edt.inputType = InputType.TYPE_CLASS_NUMBER
+                }
+
+                "text" -> {
+                    edt.inputType = InputType.TYPE_CLASS_TEXT
+                }
+
+                "date" -> {
+
+                    edt.inputType = InputType.TYPE_NULL
+                    edt.isFocusable = false
+                    edt.isClickable = true
+
+                    edt.setOnClickListener {
+
+                        val calendario = Calendar.getInstance()
+
+                        DatePickerDialog(
+                            view.context,
+                            { _, year, month, day ->
+
+                                val data = String.format(
+                                    "%02d/%02d/%04d",
+                                    day,
+                                    month + 1,
+                                    year
+                                )
+
+                                edt.setText(data)
+                            },
+                            calendario.get(Calendar.YEAR),
+                            calendario.get(Calendar.MONTH),
+                            calendario.get(Calendar.DAY_OF_MONTH)
+
+                        ).show()
+                    }
+                }
+            }
         }
 
+        configurarCampo(
+            findViewById(R.id.campoEnergiaAtiva),
+            "Energia Ativa",
+            "Ativa",
+            "number"
+        )
+
+        configurarCampo(
+            findViewById(R.id.campoEnergiaInjetada),
+            "Energia Reativa",
+            "Reativa",
+            "number"
+        )
+
+        configurarCampo(
+            findViewById(R.id.campoDatadeconta),
+            "Número de Dias",
+            "Selecione a data",
+            "date"
+        )
+
         // ===== CAMPO DE IMAGEM =====
-        imgCampoFoto = findViewById(R.id.insertFoto)
+        //imgCampoFoto = findViewById(R.id.insertFoto)
 
         // val alturaOriginal = resources.getDimensionPixelSize(R.dimen.campo_imagem_altura)
 
-        imgCampoFoto.setOnClickListener {
-            mostrarOpcoesImagem()
-        }
+//        imgCampoFoto.setOnClickListener {
+//            mostrarOpcoesImagem()
+//        }
 
         // ===== MENU SUPERIOR =====
         val btnMenu = findViewById<ImageButton>(R.id.btnMenu)
@@ -107,6 +175,18 @@ class PageCadastroB : AppCompatActivity() {
         // ===== NAVEGAÇÃO =====
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        // ===== Botão de Submit =====
+        val btnSubmit = findViewById<MaterialButton>(R.id.btnSubmit)
+
+        btnSubmit.setOnClickListener {
+
+            // Aqui você salva os dados
+
+            Snackbar.make(it, "Valores gravados com sucesso", Snackbar.LENGTH_LONG)
+                .show()
+
         }
 
         //MENU RODAPÉ
@@ -141,31 +221,31 @@ class PageCadastroB : AppCompatActivity() {
     }
 
     // Cria uma URI temporária para a câmera salvar a imagem
-    private fun criarUriImagem(): Uri {
-        val arquivo = File.createTempFile("foto_", ".jpg", cacheDir)
-        return FileProvider.getUriForFile(this, "$packageName.provider", arquivo)
-    }
-
-    // Abre a câmera
-    private fun abrirCamera() {
-        uriImagem = criarUriImagem()
-        tirarFoto.launch(uriImagem!!)
-    }
-
-    // Abre a galeria
-    private fun abrirGaleria() {
-        selecionarGaleria.launch("image/*")
-    }
-
-    // Mostra o diálogo de escolha
-    private fun mostrarOpcoesImagem() {
-        val opcoes = arrayOf("Câmera", "Galeria")
-
-        AlertDialog.Builder(this)
-            .setTitle("Selecionar imagem")
-            .setItems(opcoes) { _, i ->
-                if (i == 0) abrirCamera() else abrirGaleria()
-            }
-            .show()
-    }
+//    private fun criarUriImagem(): Uri {
+//        val arquivo = File.createTempFile("foto_", ".jpg", cacheDir)
+//        return FileProvider.getUriForFile(this, "$packageName.provider", arquivo)
+//    }
+//
+//    // Abre a câmera
+//    private fun abrirCamera() {
+//        uriImagem = criarUriImagem()
+//        tirarFoto.launch(uriImagem!!)
+//    }
+//
+//    // Abre a galeria
+//    private fun abrirGaleria() {
+//        selecionarGaleria.launch("image/*")
+//    }
+//
+//    // Mostra o diálogo de escolha
+//    private fun mostrarOpcoesImagem() {
+//        val opcoes = arrayOf("Câmera", "Galeria")
+//
+//        AlertDialog.Builder(this)
+//            .setTitle("Selecionar imagem")
+//            .setItems(opcoes) { _, i ->
+//                if (i == 0) abrirCamera() else abrirGaleria()
+//            }
+//            .show()
+//    }
 }
