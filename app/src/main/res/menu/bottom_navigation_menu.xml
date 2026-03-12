@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/add"
         android:icon="@drawable/ic_plus"
         android:title="Add" />
 
     <item
-        android:id="@+id/search"
+        android:id="@+id/calendar"
         android:icon="@drawable/ic_calendar"
         android:title="Calendar" />
 
     <item
-        android:id="@+id/favorites"
+        android:id="@+id/grafic"
         android:icon="@drawable/ic_bar_chart"
         android:title="Grafic" />
 

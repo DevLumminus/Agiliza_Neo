@@ -35,24 +35,24 @@ class PageRegistros : AppCompatActivity() {
         }
 
         // 🔹 Botão "Add" da bottom bar → também retorna à MainActivity
-        val botaoAdd = findViewById<FrameLayout>(R.id.btAdd)
-        botaoAdd.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
-        // 🔹 Botão "Calendario" da bottom bar → abre PageRegistros
-        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
-        botaoCalendar.setOnClickListener {
-            val intent = Intent(this, PageRegistros::class.java)
-            startActivity(intent)
-        }
-
-        // 🔹 Botão "Estatistica" da bottom bar → abre novamente PageEstatistica
-        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
-        botaoEstatistic.setOnClickListener {
-            val intent = Intent(this, PageEstatistica::class.java)
-            startActivity(intent)
-        }
+//        val botaoAdd = findViewById<FrameLayout>(R.id.btAdd)
+//        botaoAdd.setOnClickListener {
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//        }
+//
+//        // 🔹 Botão "Calendario" da bottom bar → abre PageRegistros
+//        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
+//        botaoCalendar.setOnClickListener {
+//            val intent = Intent(this, PageRegistros::class.java)
+//            startActivity(intent)
+//        }
+//
+//        // 🔹 Botão "Estatistica" da bottom bar → abre novamente PageEstatistica
+//        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
+//        botaoEstatistic.setOnClickListener {
+//            val intent = Intent(this, PageEstatistica::class.java)
+//            startActivity(intent)
+//        }
     }
 }

@@ -188,37 +188,38 @@ class PageCadastroB : AppCompatActivity() {
                 .show()
 
         }
+    }
 
         //MENU RODAPÉ
 
         //AÇÃO DO BOTÃO ADD
 
-        val botaoAdd = findViewById<FrameLayout>(R.id.btAdd)
-        botaoAdd.setOnClickListener {
-            // Cria uma Intent para abrir a Page1CadastroActivity
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            // startActivity inicia a nova Activity sem fechar a MainActivity
-        }
-
-        //AÇÃO DO BOTÃO CALENDARIO
-
-        // Botão "Calendario"
-        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
-        botaoCalendar.setOnClickListener {   // <-- aqui deve ser botaoCalendar
-            val intent = Intent(this, PageRegistros::class.java)
-            startActivity(intent)
-        }
-
-        //AÇÃO DO BOTÃO ESTATISTICA
-
-        // Botão "Estatistica"
-        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
-        botaoEstatistic.setOnClickListener {  // <-- aqui deve ser botaoEstatistic
-            val intent = Intent(this, PageEstatistica::class.java)
-            startActivity(intent)
-        }
-    }
+//        val botaoAdd = findViewById<FrameLayout>(R.id.btAdd)
+//        botaoAdd.setOnClickListener {
+//            // Cria uma Intent para abrir a Page1CadastroActivity
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            // startActivity inicia a nova Activity sem fechar a MainActivity
+//        }
+//
+//        //AÇÃO DO BOTÃO CALENDARIO
+//
+//        // Botão "Calendario"
+//        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
+//        botaoCalendar.setOnClickListener {   // <-- aqui deve ser botaoCalendar
+//            val intent = Intent(this, PageRegistros::class.java)
+//            startActivity(intent)
+//        }
+//
+//        //AÇÃO DO BOTÃO ESTATISTICA
+//
+//        // Botão "Estatistica"
+//        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
+//        botaoEstatistic.setOnClickListener {  // <-- aqui deve ser botaoEstatistic
+//            val intent = Intent(this, PageEstatistica::class.java)
+//            startActivity(intent)
+//        }
+//    }
 
     // Cria uma URI temporária para a câmera salvar a imagem
 //    private fun criarUriImagem(): Uri {
@@ -248,4 +249,3 @@ class PageCadastroB : AppCompatActivity() {
 //            }
 //            .show()
 //    }
-}

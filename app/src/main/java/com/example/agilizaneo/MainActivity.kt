@@ -1,26 +1,16 @@
 package com.example.agilizaneo
-// Define o pacote da aplicação. Todos os arquivos Kotlin pertencem a este pacote.
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.FrameLayout
 import android.widget.ImageButton
-import androidx.appcompat.widget.AppCompatButton
 import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.color.DynamicColors
-// Importações necessárias:
-// - Intent: para navegar entre Activities
-// - Bundle: para receber o estado salvo da Activity
-// - ImageButton e AppCompatButton: referências de botões do layout
-// - PopupMenu: menu suspenso para a toolbar
-// - enableEdgeToEdge: permite que a interface ocupe toda a tela
-// - AppCompatActivity: base para Activities compatíveis com versões antigas do Android
-// - ViewCompat e WindowInsetsCompat: para lidar com padding e barras do sistema
-// - DynamicColors: aplica cores do Material You (Android 12+)
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     // Define a MainActivity, que é a tela inicial da aplicação
@@ -66,25 +56,25 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Botão "Vamos Agilizar"
-        val botaoAdd = findViewById<AppCompatButton>(R.id.BotaoAdd)
+        val botaoAdd = findViewById<MaterialButton>(R.id.BotaoAdd)
         botaoAdd.setOnClickListener {
             val intent = Intent(this, PageCadastroB::class.java)
             startActivity(intent)
         }
 
         // Botão "Calendario"
-//        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
-//        botaoCalendar.setOnClickListener {   // <-- aqui deve ser botaoCalendar
-//            val intent = Intent(this, PageRegistros::class.java)
-//            startActivity(intent)
-//        }
+        val botaoCalendar = findViewById<BottomNavigationView>(R.id.calendar)
+        botaoCalendar.setOnClickListener {   // <-- aqui deve ser botaoCalendar
+            val intent = Intent(this, PageRegistros::class.java)
+            startActivity(intent)
+        }
 //
 //        // Botão "Estatistica"
-//        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
-//        botaoEstatistic.setOnClickListener {  // <-- aqui deve ser botaoEstatistic
-//            val intent = Intent(this, PageEstatistica::class.java)
-//            startActivity(intent)
-//        }
+        val botaoEstatistic = findViewById<BottomNavigationView>(R.id.grafic)
+        botaoEstatistic.setOnClickListener {  // <-- aqui deve ser botaoEstatistic
+            val intent = Intent(this, PageEstatistica::class.java)
+            startActivity(intent)
+        }
 
     }
 }
