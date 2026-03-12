@@ -58,15 +58,14 @@
     <LinearLayout
         android:id="@+id/blocoPrincipal"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barraSuperior"
-        app:layout_constraintBottom_toTopOf="@id/menuPrincipal"
-        app:layout_constraintVertical_bias="0.35"> <!-- centraliza verticalmente -->
+        app:layout_constraintBottom_toTopOf="@id/menuPrincipal"> <!-- centraliza verticalmente -->
 
         <!-- 🔹 TEXTO DE BOAS-VINDAS -->
         <TextView

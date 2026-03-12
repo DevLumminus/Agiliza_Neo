@@ -2,14 +2,15 @@ package com.example.agilizaneo
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.FrameLayout
+import android.view.View
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class PageEstatistica : AppCompatActivity() {
+class PageEstatistica : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,25 +35,12 @@ class PageEstatistica : AppCompatActivity() {
             // startActivity inicia a MainActivity sem fechar a PageEstatistica
         }
 
-        // 🔹 Botão "Add" da bottom bar → também retorna à MainActivity
-//        val botaoAdd = findViewById<FrameLayout>(R.id.btAdd)
-//        botaoAdd.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        // 🔹 Botão "Calendario" da bottom bar → abre PageRegistros
-//        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
-//        botaoCalendar.setOnClickListener {
-//            val intent = Intent(this, PageRegistros::class.java)
-//            startActivity(intent)
-//        }
-//
-//        // 🔹 Botão "Estatistica" da bottom bar → abre novamente PageEstatistica
-//        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
-//        botaoEstatistic.setOnClickListener {
-//            val intent = Intent(this, PageEstatistica::class.java)
-//            startActivity(intent)
-//        }
+        //==== MENU SUPERIOR ====
+
+        setupMenuSuperior()
+
+        //==== MENU RODAPÉ ====
+        setupMenuRodape()
+
     }
 }

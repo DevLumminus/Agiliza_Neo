@@ -7,13 +7,9 @@ import android.os.Bundle
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
-import java.io.File
 import java.util.Calendar
 import android.text.InputType
 import android.view.View
@@ -22,8 +18,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.button.MaterialButton
 import android.widget.PopupMenu
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class PageCadastroB : AppCompatActivity() {
+class PageCadastroB : BaseActivity() {
 
     // URI onde a imagem (câmera ou galeria) será armazenada
     //private lateinit var uriImagem: Uri
@@ -165,16 +162,61 @@ class PageCadastroB : AppCompatActivity() {
 //        }
 
         // ===== MENU SUPERIOR =====
-        val btnMenu = findViewById<ImageButton>(R.id.btnMenu)
-        btnMenu.setOnClickListener {
-            val popup = PopupMenu(this, btnMenu)
-            popup.menuInflater.inflate(R.menu.toolbar_menu, popup.menu)
-            popup.show()
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+            ?: findViewById<View>(R.id.menuPrincipal)?.findViewById(R.id.bottomNavigation)
+
+        // 2. MARCAR O ÍCONE CORRETO AUTOMATICAMENTE
+        // Verifica qual é a classe atual (this) e marca o ID correspondente
+        // No arquivo Padrão_Page.kt, dentro da fun setupMenuRodape()
+
+// 2. MARCAR O ÍCONE CORRETO AUTOMATICAMENTE
+        bottomNav?.apply {
+            val itemParaMarcar = when (this) {
+                is MainActivity -> R.id.add
+                is PageInsightCalendar -> R.id.calendar
+                is PageEstatistica -> R.id.grafic
+                // Se for uma dessas páginas, retornamos null para apagar tudo
+                is PageConfig, is PageHelp -> null
+                else -> null
+            }
+
+            if (itemParaMarcar != null) {
+                setOnItemSelectedListener(null)
+                selectedItemId = itemParaMarcar
+            } else {
+                // Lógica para "apagar" o menu:
+                // Tornamos os itens não-checáveis momentaneamente para limpar a seleção
+                menu.setGroupCheckable(0, true, false)
+                for (i in 0 until menu.size()) {
+                    menu.getItem(i).isChecked = false
+                }
+                menu.setGroupCheckable(0, true, true)
+            }
         }
 
-        // ===== NAVEGAÇÃO =====
-        findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+        // 3. Listener de Clique (Navegação)
+        bottomNav?.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.calendar -> {
+                    if (this !is PageInsightCalendar) {
+                        val intent = Intent(this, PageInsightCalendar::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+                        overridePendingTransition(0, 0)
+                    }
+                    true
+                }
+                R.id.grafic -> {
+                    if (this !is PageEstatistica) {
+                        val intent = Intent(this, PageEstatistica::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                        startActivity(intent)
+                        overridePendingTransition(0, 0)
+                    }
+                    true
+                }
+                else -> false
+            }
         }
 
         // ===== Botão de Submit =====
@@ -188,38 +230,38 @@ class PageCadastroB : AppCompatActivity() {
                 .show()
 
         }
+
+        // ==== MENU RODAPÉ ====
+        val btnMenu = findViewById<ImageButton>(R.id.btnMenu)
+
+        btnMenu?.setOnClickListener {
+
+            val popup = PopupMenu(this, btnMenu)
+
+            popup.menuInflater.inflate(R.menu.toolbar_menu, popup.menu)
+
+            popup.setOnMenuItemClickListener { item ->
+
+                when(item.itemId) {
+
+                    R.id.MenuAjuda -> {
+                        startActivity(Intent(this, PageHelp::class.java))
+                        true
+                    }
+
+                    R.id.MenuConfig -> {
+                        startActivity(Intent(this, PageConfig::class.java))
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+
+            popup.show()
+        }
+
     }
-
-        //MENU RODAPÉ
-
-        //AÇÃO DO BOTÃO ADD
-
-//        val botaoAdd = findViewById<FrameLayout>(R.id.btAdd)
-//        botaoAdd.setOnClickListener {
-//            // Cria uma Intent para abrir a Page1CadastroActivity
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            // startActivity inicia a nova Activity sem fechar a MainActivity
-//        }
-//
-//        //AÇÃO DO BOTÃO CALENDARIO
-//
-//        // Botão "Calendario"
-//        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
-//        botaoCalendar.setOnClickListener {   // <-- aqui deve ser botaoCalendar
-//            val intent = Intent(this, PageRegistros::class.java)
-//            startActivity(intent)
-//        }
-//
-//        //AÇÃO DO BOTÃO ESTATISTICA
-//
-//        // Botão "Estatistica"
-//        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
-//        botaoEstatistic.setOnClickListener {  // <-- aqui deve ser botaoEstatistic
-//            val intent = Intent(this, PageEstatistica::class.java)
-//            startActivity(intent)
-//        }
-//    }
 
     // Cria uma URI temporária para a câmera salvar a imagem
 //    private fun criarUriImagem(): Uri {
@@ -248,4 +290,4 @@ class PageCadastroB : AppCompatActivity() {
 //                if (i == 0) abrirCamera() else abrirGaleria()
 //            }
 //            .show()
-//    }
+}
