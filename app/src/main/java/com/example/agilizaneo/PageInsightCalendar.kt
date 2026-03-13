@@ -2,14 +2,15 @@ package com.example.agilizaneo
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.FrameLayout
+import android.view.View
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class PageRegistros : AppCompatActivity() {
+class PageInsightCalendar : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -17,7 +18,7 @@ class PageRegistros : AppCompatActivity() {
         enableEdgeToEdge()
 
         // Define o layout da activity
-        setContentView(R.layout.activity_page_registros)
+        setContentView(R.layout.activity_page_insight_calendar)
 
         // Ajusta padding do layout principal para respeitar barras do sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -34,25 +35,11 @@ class PageRegistros : AppCompatActivity() {
             // startActivity inicia a MainActivity sem fechar a PageEstatistica
         }
 
-        // 🔹 Botão "Add" da bottom bar → também retorna à MainActivity
-        val botaoAdd = findViewById<FrameLayout>(R.id.btAdd)
-        botaoAdd.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+        //==== MENU SUPERIOR ====
+        setupMenuSuperior()
 
-        // 🔹 Botão "Calendario" da bottom bar → abre PageRegistros
-        val botaoCalendar = findViewById<FrameLayout>(R.id.btCalendar)
-        botaoCalendar.setOnClickListener {
-            val intent = Intent(this, PageRegistros::class.java)
-            startActivity(intent)
-        }
+        //==== MENU RODAPÉ ====
+        setupMenuRodape()
 
-        // 🔹 Botão "Estatistica" da bottom bar → abre novamente PageEstatistica
-        val botaoEstatistic = findViewById<FrameLayout>(R.id.btEstatistica)
-        botaoEstatistic.setOnClickListener {
-            val intent = Intent(this, PageEstatistica::class.java)
-            startActivity(intent)
-        }
     }
 }

@@ -17,6 +17,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alatsi"
+        android:text="Page calendar"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
     <include
         android:id="@+id/menuPrincipal"
         layout="@layout/barra_de_menu_padrao"
